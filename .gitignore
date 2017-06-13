@@ -1,0 +1,11 @@
+*.swp
+*.swo
+.DS_Store
+
+.scala-version
+
+/project/*
+!/project/build.properties
+/target/
+*.class
+*.log
