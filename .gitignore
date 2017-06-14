@@ -6,6 +6,7 @@
 
 /project/*
 !/project/build.properties
+!/project/assembly.sbt
 /target/
 *.class
 *.log

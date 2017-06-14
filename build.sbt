@@ -4,6 +4,9 @@ lazy val root = (project in file("."))
     organization  := "com.example",
     scalaVersion  := "2.12.1",
     version       := "0.1.0",
-    mainClass in Compile := Some("Hello")
-    // libraryDependencies += "" // dependencies package https://mvnrepository.com
+    mainClass in assembly := Some("Hello"),
+    assemblyJarName in assembly := "scala-sample.jar",
+    libraryDependencies ++= Seq(
+      //  dependencies package https://mvnrepository.com
+    )
   )

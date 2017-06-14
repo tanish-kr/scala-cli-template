@@ -56,3 +56,9 @@ src/
 - package
 - help
 - reload
+
+## Executable jar file
+
+```
+$ sbt assembly
+```
