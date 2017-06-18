@@ -1,9 +1,9 @@
 package com.example
 
-class HelloCommand(argv : Array[String]) extends Command {
+class HelloCommand(_params: Params) extends Command {
 
   val actionName = "Hello"
-  val params = argv
+  val params = _params
 
   def before(): Unit = Unit
 

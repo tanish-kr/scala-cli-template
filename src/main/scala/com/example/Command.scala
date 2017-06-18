@@ -6,9 +6,9 @@ package com.example
 trait Command {
   /* Command action name @String */
   val actionName: String
-  /* Command parameters @HashMap */
-  //val params: HashMap
-  val params: Array[String]
+  /* Command parameters @Params */
+  val params: Params
+
   /* Command prepare method */
   def before()
   /* Command run method */

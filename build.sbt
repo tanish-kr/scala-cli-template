@@ -9,6 +9,5 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       //  dependencies package https://mvnrepository.com
       "com.github.scopt" % "scopt_2.12" % "3.6.0"
-
     )
   )

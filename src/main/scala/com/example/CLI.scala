@@ -1,11 +1,11 @@
 package com.example
 
-case class Config(action: String = "", debug: Boolean = false, dryRun: Boolean = false, lang: String = "ja")
+case class Params(action: String = "", debug: Boolean = false, dryRun: Boolean = false, lang: String = "ja")
 
 object CLI {
+
   def main(args: Array[String]) {
-    println(args.deep.mkString("\n"))
-    val parser = new scopt.OptionParser[Config]("Scala command") {
+    val parser = new scopt.OptionParser[Params]("Scala command") {
       head("Scala command", "0.1.0")
 
       arg[String]("<action>").optional().action((x, c) =>
@@ -22,7 +22,7 @@ object CLI {
       note("some notes.")
 
       // children args setting
-      cmd("HelloCommand").required().action((x, c) =>
+      cmd("Hello").optional().action((x, c) =>
         c.copy(action = "HelloCommand")).text("Hello command").
         children(
           opt[String]('l', "lang").action((x, c) =>
@@ -31,6 +31,19 @@ object CLI {
 
     }
 
-    parser.parse(args, Config())
+    parser.parse(args, Params()) map { config =>
+      if (config.action != null) {
+        try {
+          val cls = Class.forName("com.example." + config.action)
+          val command = cls.getConstructor(classOf[Params]).newInstance(config).asInstanceOf[Command]
+          command.before()
+          command.run()
+          command.after()
+        } catch {
+          case e: ClassNotFoundException => println(e)
+        }
+      }
+
+    }
   }
 }
