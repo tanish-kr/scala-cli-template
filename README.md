@@ -1,5 +1,10 @@
 # Scala sbt template
 
+## Environment
+
+- scala >= 2.12.2
+- sbt >= 0.13.15
+
 ## sbt Install
 
 ### Mac OSX

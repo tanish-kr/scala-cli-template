@@ -10,3 +10,5 @@
 /target/
 *.class
 *.log
+
+.idea
