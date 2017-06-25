@@ -1,4 +1,6 @@
-package com.example
+package com.example.commands
+
+import com.example.Params
 
 class HelloCommand(_params: Params) extends Command {
 

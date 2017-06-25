@@ -1,5 +1,7 @@
 package com.example
 
+import com.example.commands.Command
+
 case class Params(action: String = "", debug: Boolean = false, dryRun: Boolean = false, lang: String = "ja")
 
 object CLI {
@@ -34,7 +36,12 @@ object CLI {
     parser.parse(args, Params()) map { config =>
       if (config.action != null) {
         try {
-          val cls = Class.forName("com.example." + config.action)
+          val pattern = """Command$""".r
+          val cls = if (pattern.findFirstIn(config.action) == Some("Command")) {
+            Class.forName("com.example.commands." + config.action)
+          } else {
+            Class.forName("com.example.commands." + config.action + "Command")
+          }
           val command = cls.getConstructor(classOf[Params]).newInstance(config).asInstanceOf[Command]
           command.before()
           command.run()
