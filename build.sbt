@@ -8,6 +8,7 @@ lazy val root = (project in file("."))
     assemblyJarName in assembly := "scala-sample.jar",
     libraryDependencies ++= Seq(
       //  dependencies package https://mvnrepository.com
-      "com.github.scopt" % "scopt_2.12" % "3.6.0"
+      "com.github.scopt" % "scopt_2.12" % "3.6.0",
+      "org.scalatest" %% "scalatest" % "3.0.1"
     )
   )
